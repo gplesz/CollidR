@@ -22,7 +22,7 @@ namespace CollidR
             if (null != Context.User)
             {
                 var groupTag = string.Format("{0}|{1}", modelType, modelId);
-                var username = string.Format("{0}|{1}", Context.User.Identity.Name, connectionId);
+                var username = string.Format("{0}|(connection:{1})", Context.User.Identity.Name, connectionId);
 
                 // add the user to the group and track them in the list of connections
                 await Groups.Add(Context.ConnectionId, groupTag);
@@ -43,7 +43,7 @@ namespace CollidR
             if (null != Context.User)
             {
                 var groupTag = string.Format("{0}|{1}", modelType, modelId);
-                var username = string.Format("{0}|{1}", Context.User.Identity.Name, connectionId);
+                var username = string.Format("{0}|(connection:{1})", Context.User.Identity.Name, connectionId);
 
                 Clients.OthersInGroup(groupTag).enterField(username, fieldName);
             }
@@ -57,7 +57,7 @@ namespace CollidR
             if (null != Context.User)
             {
                 var groupTag = string.Format("{0}|{1}", modelType, modelId);
-                var username = string.Format("{0}|{1}", Context.User.Identity.Name, connectionId);
+                var username = string.Format("{0}|(connection:{1})", Context.User.Identity.Name, connectionId);
 
                 Clients.OthersInGroup(groupTag).ExitField(username, fieldName);
             }
@@ -71,7 +71,7 @@ namespace CollidR
             if (null != Context.User)
             {
                 var groupTag = string.Format("{0}|{1}", modelType, modelId);
-                var username = string.Format("{0}|{1}", Context.User.Identity.Name, connectionId);
+                var username = string.Format("{0}|(connection:{1})", Context.User.Identity.Name, connectionId);
 
                 Clients.OthersInGroup(groupTag).modifyField(username, fieldName);
             }
@@ -83,7 +83,7 @@ namespace CollidR
 
             if (null != Context.User)
             {
-                var username = string.Format("{0}|{1}", Context.User.Identity.Name, connectionId);
+                var username = string.Format("{0}|(connection:{1})", Context.User.Identity.Name, connectionId);
                 var groups = _connections.ClearUser(username);
 
                 // notify any groups the user was in
